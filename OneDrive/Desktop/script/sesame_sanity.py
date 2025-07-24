@@ -1,25 +1,12 @@
-"""
-Generic SSH Monitoring Script Template
-Author: [Your Name]
-Purpose: Securely connect to a remote server via SSH, run predefined checks,
-         and display outputs in both raw and formatted views.
-
-Dependencies:
-- paramiko: for SSH connection
-- tabulate: for clean tabular formatting
-Install with: pip install paramiko tabulate
-"""
-
 import paramiko
 from tabulate import tabulate
 
-# --- SSH Configuration ---
 hostname = "your.remote.host"
 port = 22
 username = "your-username"
-password = "your-password"  # Consider using getpass.getpass() for security
+password = "your-password" 
 
-# --- Commands to Run (fill in your use cases) ---
+
 commands = {
     "Check 1": {
         "cmd": 'your-command-here',
@@ -31,7 +18,7 @@ commands = {
     },
 }
 
-# --- Formatters (customize these for your output structure) ---
+
 def your_formatter(output):
     """
     Example formatter function.
@@ -42,11 +29,10 @@ def your_formatter(output):
         rows.append([line.strip()])
     return tabulate(rows, headers=["Output"], tablefmt="grid")
 
-# Example fallback formatter if none defined
+
 def raw_formatter(output):
     return tabulate([[line] for line in output.splitlines()], headers=["Output"], tablefmt="grid")
 
-# --- SSH Execution ---
 def run_remote_commands():
     try:
         print("[INFO] Connecting to SSH server...")
